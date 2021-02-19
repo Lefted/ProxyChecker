@@ -1,0 +1,44 @@
+  plugins {
+    id 'java-library'
+    id 'eclipse'
+    // id 'com.dorongold.task-tree' version '1.5'
+  }
+
+  project.version = 1
+  project.ext.author = 'Lefted'
+  
+  repositories {
+    jcenter()
+    mavenCentral()
+  }
+
+  dependencies {
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.0.3'
+    implementation 'commons-io:commons-io:2.7'
+    // implementation 'com.google.code.gson:gson:2.8.6'
+    // implementation 'org.apache.logging.log4j:log4j:2.13.3'
+  }
+
+  
+  java {
+    // withSourcesJar()
+    // withJavadocJar()
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+  }
+
+  eclipse {
+    project {
+      name = project.name
+    }
+  }
+
+  jar {
+    manifest {
+      attributes(
+        'Implementation-Title': project.name,
+        'Implementation-Version': project.version,
+        'Author': project.ext.author
+        )
+    }
+  }
