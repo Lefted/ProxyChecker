@@ -19,17 +19,17 @@ import org.apache.hc.core5.http.NameValuePair;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
 import org.apache.hc.core5.util.Timeout;
 
-public class Checker {
+public class ProxyChecker {
 
     public static final int NUM_THREADS_MAX = 200;
-    public static Checker instance;
+    public static ProxyChecker instance;
 
     public static volatile int left = 0;
     public static volatile int countWorking, countFailing = 0;
     public static volatile List<String> workingCombos = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
-	instance = new Checker();
+	instance = new ProxyChecker();
 	final List<NameValuePair> nvps = instance.getIpPortCombo("src/main/java/me/lefted/proxychecker/input.txt");
 	left = nvps.size();
 
